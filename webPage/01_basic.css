@@ -1,14 +1,17 @@
-*{
+
+/* 스크롤바 안보이게 */
+
+* {
     outline: none;
     margin: 0;
 }
 
-/* 스크롤바 안보이게 */
-body{
+body {
     overflow: hidden;
+    background-color: azure;
 }
 
-#webgl-container{
+#webgl_container {
     position: absolute;
     top: 0;
     left: 0;
