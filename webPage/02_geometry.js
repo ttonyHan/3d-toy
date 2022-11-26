@@ -1,7 +1,7 @@
 
 // https://www.youtube.com/watch?v=vjKuk5Vp93k
 
-import * as THREE from "../three.js-master/	ild/three.module.js";
+import * as THREE from "../three.js-master/build/three.module.js";
 
 class App {
 	constructor() {
@@ -43,13 +43,20 @@ class App {
 	}
 
 	_setupModel() {
-		const geometry = new THREE.BoxGeometry(1, 1, 1);
-		const material = new THREE.MeshPhongMaterial({ color: 0x44a88 });
+		const geometry = new THREE.BoxGeometry(1,1,1);
+		const fillMaterial = new THREE.MeshPhongMaterial({color:0x515151});
+		const cube = new THREE.Mesh(geometry, fillMaterial);
 
-		const cube = new THREE.Mesh(geometry, material);
+		const lineMaterial = new THREE.LineBasicMaterial({color:0xffff00});
+		const line = new THREE.LineSegments(
+			new THREE.WireframeGeometry(geometry),lineMaterial);
+		
+		const group = new THREE.Group()
+		group.add(cube);
+		group.add(line);
 
-		this._scene.add(cube);
-		this._cube = cube;
+		this._scene.add(group);
+		this._cube = group;
 	}
 
 	resize() {
